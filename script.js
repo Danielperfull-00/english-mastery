@@ -1,4 +1,3 @@
-
 let currentLevel = 'all';
 let currentCat = 'all';
 let completedLessons = new Set();
@@ -11,13 +10,33 @@ const closeModalBtn = document.getElementById('close-modal');
 const completeBtn = document.getElementById('complete-btn');
 
 function init() {
+    loadProgress();
     renderCards();
     setupEventListeners();
     updateProgress();
 }
 
+function loadProgress() {
+    try {
+        const saved = localStorage.getItem('englishMasteryProgress');
+        if (saved) {
+            const parsed = JSON.parse(saved);
+            if (Array.isArray(parsed)) {
+                completedLessons = new Set(parsed);
+            }
+        }
+    } catch (e) {
+        console.error("Error loading progress", e);
+    }
+}
+
+function saveProgress() {
+    localStorage.setItem('englishMasteryProgress', JSON.stringify([...completedLessons]));
+}
+
 function renderCards() {
     const grid = document.getElementById('course-grid');
+    if (!grid) return;
     grid.innerHTML = '';
 
     const filtered = FULL_COURSE_DATA.filter(item => {
@@ -33,44 +52,46 @@ function renderCards() {
                 <p>No hay lecciones que coincidan con estos filtros.</p>
             </div>
         `;
-        lucide.createIcons();
+        if (window.lucide) lucide.createIcons();
         return;
     }
 
     filtered.forEach(item => {
+        const isCompleted = completedLessons.has(item.id);
         const card = document.createElement('div');
-        card.className = `card ${completedLessons.has(item.id) ? 'completed' : ''}`;
+        card.className = `card ${isCompleted ? 'completed' : ''}`;
         card.innerHTML = `
             <span class="card-level">${item.levelName}</span>
             <h3 class="card-title">${item.title}</h3>
             <p class="card-desc">${item.desc}</p>
             <div class="card-footer">
-                <span class="category-tag">${item.catName}</span>
+                <span class="category-tag"><i data-lucide="${item.icon}"></i> ${item.catName}</span>
                 <button class="card-action" data-id="${item.id}">
-                    ${completedLessons.has(item.id) ? 'Completado' : 'Estudiar'}
+                    ${isCompleted ? 'Completado' : 'Estudiar'}
                 </button>
             </div>
         `;
         
-        // Open lesson on card click, but handle button specifically
         card.onclick = (e) => {
             if (e.target.classList.contains('card-action')) {
-                handleAction(item.id);
+                handleAction(item.id, e);
             } else {
                 openLesson(item.id);
             }
         };
         grid.appendChild(card);
     });
-    lucide.createIcons();
+    if (window.lucide) lucide.createIcons();
 }
 
-function handleAction(id) {
+function handleAction(id, event) {
+    if (event) event.stopPropagation();
     if (completedLessons.has(id)) {
         completedLessons.delete(id);
     } else {
         completedLessons.add(id);
     }
+    saveProgress();
     renderCards();
     updateProgress();
 }
@@ -83,33 +104,47 @@ function openLesson(id) {
     modalTitle.innerText = lesson.title;
     modalBody.innerHTML = lesson.content;
     
+    if (completedLessons.has(id)) {
+        completeBtn.innerText = "Desmarcar";
+        completeBtn.classList.add("completed-state");
+    } else {
+        completeBtn.innerText = "Marcar como Completada";
+        completeBtn.classList.remove("completed-state");
+    }
+    
     completeBtn.onclick = () => {
-        completedLessons.add(id);
-        updateProgress();
-        renderCards();
+        handleAction(id);
         closeModal();
     };
 
     modalOverlay.classList.add('active');
+    setTimeout(() => {
+        document.querySelector('.modal-container').classList.add('active');
+    }, 10);
 }
 
 function closeModal() {
-    modalOverlay.classList.remove('active');
+    document.querySelector('.modal-container').classList.remove('active');
+    setTimeout(() => {
+        modalOverlay.classList.remove('active');
+    }, 300);
 }
 
 function updateProgress() {
+    if (FULL_COURSE_DATA.length === 0) return;
     const percent = Math.round((completedLessons.size / FULL_COURSE_DATA.length) * 100);
-    document.getElementById('progress-percent').innerText = `${percent}%`;
-    document.getElementById('main-progress').style.width = `${percent}%`;
+    document.getElementById('progress-percent').innerText = \`\${percent}%\`;
+    document.getElementById('main-progress').style.width = \`\${percent}%\`;
 }
 
 function setupEventListeners() {
-    closeModalBtn.onclick = closeModal;
+    if(closeModalBtn) closeModalBtn.onclick = closeModal;
     
-    // Close modal on clicking outside the container
-    modalOverlay.onclick = (e) => {
-        if (e.target === modalOverlay) closeModal();
-    };
+    if(modalOverlay) {
+        modalOverlay.onclick = (e) => {
+            if (e.target === modalOverlay) closeModal();
+        };
+    }
 
     document.querySelectorAll('.nav-item').forEach(btn => {
         btn.addEventListener('click', () => {
@@ -130,4 +165,9 @@ function setupEventListeners() {
     });
 }
 
-window.onload = init;
+// Guarantee execution when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+} else {
+    init();
+}
