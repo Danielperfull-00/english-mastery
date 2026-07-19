@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,93 +11,141 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="app-container">
-        <!-- Sidebar Navigation -->
-        <aside class="sidebar">
-            <div class="logo">
-                <div class="logo-icon">EN</div>
-                <span>Mastery</span>
+
+<!-- CONFETTI CANVAS -->
+<canvas id="confetti-canvas"></canvas>
+
+<div class="app-container">
+    <!-- ===== SIDEBAR ===== -->
+    <aside class="sidebar">
+        <div class="logo">
+            <div class="logo-icon">EN</div>
+            <span>Mastery</span>
+        </div>
+
+        <!-- XP / Level Box -->
+        <div class="xp-box">
+            <div class="xp-header">
+                <span class="xp-level-badge" id="xp-level-badge">Principiante</span>
+                <span class="xp-points" id="xp-points-display">0 XP</span>
             </div>
-            
-            <nav class="nav-menu">
-                <div class="nav-section">
-                    <span class="nav-label">Niveles</span>
-                    <button class="nav-item active" data-level="all">Todo el Camino</button>
-                    <button class="nav-item" data-level="a1a2">Principiante (A1-A2)</button>
-                    <button class="nav-item" data-level="b1b2">Intermedio (B1-B2)</button>
-                    <button class="nav-item" data-level="c1">Avanzado (C1)</button>
-                    <button class="nav-item" data-level="c2">Maestría (C2)</button>
-                </div>
-
-                <div class="nav-section">
-                    <span class="nav-label">Categorías</span>
-                    <button class="cat-item active" data-cat="all">Todas las áreas</button>
-                    <button class="cat-item" data-cat="grammar">Gramática</button>
-                    <button class="cat-item" data-cat="vocab">Vocabulario</button>
-                    <button class="cat-item" data-cat="listening">Listening</button>
-                    <button class="cat-item" data-cat="speaking">Speaking</button>
-                    <button class="cat-item" data-cat="reading">Reading</button>
-                    <button class="cat-item" data-cat="writing">Writing</button>
-                    <button class="cat-item" data-cat="pronunciation">Pronunciación</button>
-                </div>
-            </nav>
-
-            <div class="sidebar-footer">
-                <span class="status-dot"></span>
-                <p>Aprendiendo activamente</p>
+            <div class="xp-bar-track">
+                <div class="xp-bar-fill" id="xp-bar-fill"></div>
             </div>
-        </aside>
-
-        <!-- Main Content -->
-        <main class="content">
-            <header class="main-header">
-                <div class="header-text">
-                    <h1>Domina el Inglés <span class="text-red">desde Cero</span></h1>
-                    <p>Tu hoja de ruta definitiva hacia la fluidez total.</p>
-                </div>
-                <div class="user-badge">
-                    <span>&#128218;</span>
-                    <span>Estudiante</span>
-                </div>
-            </header>
-
-            <div class="progress-banner">
-                <div class="progress-info">
-                    <span>Tu Progreso Global</span>
-                    <span id="progress-percent">0%</span>
-                </div>
-                <div class="progress-bar">
-                    <div class="progress-fill" id="main-progress"></div>
-                </div>
-                <p class="progress-sub" id="progress-sub">0 de 0 lecciones completadas</p>
-            </div>
-
-            <section class="grid-container" id="course-grid">
-                <!-- Cards injected by JS -->
-            </section>
-        </main>
-    </div>
-
-    <!-- Content Modal -->
-    <div class="modal-overlay" id="modal-overlay">
-        <div class="modal-container" id="modal-container">
-            <div class="modal-header">
-                <div class="modal-title-area">
-                    <span id="modal-level" class="modal-level">Principiante</span>
-                    <h2 id="modal-title">Título de la Lección</h2>
-                </div>
-                <button class="close-modal" id="close-modal">&times;</button>
-            </div>
-            <div class="modal-body" id="modal-body">
-                <!-- Content injected here -->
-            </div>
-            <div class="modal-footer">
-                <button class="complete-btn" id="complete-btn">Marcar como Completada</button>
+            <div class="xp-sub" id="xp-sub">0 / 500 XP para el siguiente nivel</div>
+            <div class="streak-row">
+                <span class="streak-icon">&#128293;</span>
+                <span id="streak-display">0 días de racha</span>
             </div>
         </div>
-    </div>
 
-    <script src="content.js"></script>
-    <script src="script.js"></script>
+        <nav class="nav-menu">
+            <div class="nav-section">
+                <span class="nav-label">Niveles</span>
+                <button class="nav-item active" data-level="all">&#127760; Todo el Camino</button>
+                <button class="nav-item" data-level="a1a2">&#127311; Principiante (A1-A2)</button>
+                <button class="nav-item" data-level="b1b2">&#127310; Intermedio (B1-B2)</button>
+                <button class="nav-item" data-level="c1">&#127308; Avanzado (C1)</button>
+                <button class="nav-item" data-level="c2">&#11088; Maestría (C2)</button>
+            </div>
+            <div class="nav-section">
+                <span class="nav-label">Categorías</span>
+                <button class="cat-item active" data-cat="all">&#128218; Todas las áreas</button>
+                <button class="cat-item" data-cat="grammar">&#128221; Gramática</button>
+                <button class="cat-item" data-cat="vocab">&#128172; Vocabulario</button>
+                <button class="cat-item" data-cat="listening">&#127911; Listening</button>
+                <button class="cat-item" data-cat="speaking">&#127908; Speaking</button>
+                <button class="cat-item" data-cat="reading">&#128214; Reading</button>
+                <button class="cat-item" data-cat="writing">&#9997;&#65039; Writing</button>
+                <button class="cat-item" data-cat="pronunciation">&#128266; Pronunciación</button>
+            </div>
+        </nav>
+
+        <div class="sidebar-footer">
+            <span class="status-dot"></span>
+            <p>Aprendiendo activamente</p>
+        </div>
+    </aside>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main class="content">
+        <!-- Top bar -->
+        <div class="top-bar">
+            <div class="header-text">
+                <h1>Domina el Inglés <span class="text-red">desde Cero</span></h1>
+                <p>Tu hoja de ruta definitiva hacia la fluidez total.</p>
+            </div>
+            <div class="top-bar-controls">
+                <!-- Search -->
+                <div class="search-wrap">
+                    <span class="search-icon">&#128269;</span>
+                    <input type="text" id="search-input" placeholder="Buscar lección..." autocomplete="off">
+                    <button class="search-clear" id="search-clear" style="display:none">&#10005;</button>
+                </div>
+                <!-- View toggle -->
+                <button class="icon-btn" id="view-toggle" title="Cambiar vista">&#9776;</button>
+                <!-- Theme toggle -->
+                <button class="icon-btn" id="theme-toggle" title="Cambiar tema">&#127769;</button>
+            </div>
+        </div>
+
+        <!-- Progress -->
+        <div class="progress-banner">
+            <div class="progress-info">
+                <span>Progreso Global</span>
+                <span id="progress-percent">0%</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="main-progress"></div>
+            </div>
+            <p class="progress-sub" id="progress-sub">0 de 25 lecciones completadas</p>
+        </div>
+
+        <!-- Course Grid -->
+        <section class="grid-container" id="course-grid"></section>
+    </main>
+</div>
+
+<!-- ===== LESSON MODAL ===== -->
+<div class="modal-overlay" id="modal-overlay">
+    <div class="modal-container" id="modal-container">
+        <div class="modal-header">
+            <div class="modal-title-area">
+                <span id="modal-level" class="modal-level">Principiante</span>
+                <h2 id="modal-title">Título</h2>
+            </div>
+            <div class="modal-header-actions">
+                <button class="speak-btn" id="speak-btn" title="Escuchar pronunciación" style="display:none">&#128266; Escuchar</button>
+                <button class="close-modal" id="close-modal">&times;</button>
+            </div>
+        </div>
+        <div class="modal-body" id="modal-body"></div>
+
+        <!-- Quiz Section -->
+        <div class="quiz-section" id="quiz-section" style="display:none">
+            <div class="quiz-header">
+                <span class="quiz-title">&#129504; Quiz Rápido</span>
+                <span class="quiz-progress-txt" id="quiz-progress-txt">Pregunta 1 de 3</span>
+            </div>
+            <div id="quiz-question-text" class="quiz-question-text"></div>
+            <div id="quiz-options" class="quiz-options"></div>
+            <div id="quiz-feedback" class="quiz-feedback" style="display:none"></div>
+            <div class="quiz-nav">
+                <button class="quiz-btn" id="quiz-next-btn" style="display:none">Siguiente &#8594;</button>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <button class="quiz-start-btn" id="quiz-start-btn">&#129504; Hacer Quiz (+50 XP)</button>
+            <button class="complete-btn" id="complete-btn">&#9989; Marcar como Completada (+100 XP)</button>
+        </div>
+    </div>
+</div>
+
+<!-- ===== XP TOAST ===== -->
+<div class="xp-toast" id="xp-toast"></div>
+
+<script src="content.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
