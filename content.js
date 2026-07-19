@@ -35,9 +35,9 @@ var FULL_COURSE_DATA = [
             '<ul><li>3 formas: <strong>am</strong> (yo), <strong>is</strong> (él/ella/eso), <strong>are</strong> (tú/nosotros/ellos)</li>' +
             '<li>Contracciones: I\'m, you\'re, he\'s, she\'s, it\'s, we\'re, they\'re</li></ul>',
         quiz: [
-            { question: 'Choose the correct form: "She ___ my sister."', options: ['am', 'is', 'are', 'be'], correct: 1, explanation: '"She" uses "is". Solo "am" va con I, "is" con he/she/it, "are" con you/we/they.' },
-            { question: 'What is the contraction of "I am not"?', options: ["I amn't", "I'm not", "I isn't", "I aren't"], correct: 1, explanation: 'La única contracción posible de "I am not" es "I\'m not".' },
-            { question: '"Are you a student?" - What type of sentence is this?', options: ['Affirmative', 'Negative', 'Question', 'Command'], correct: 2, explanation: 'Al invertir el sujeto y el verbo (Are + you) formamos una pregunta.' }
+            { question: 'Elige la forma correcta: "She ___ my sister."', options: ['am', 'is', 'are', 'be'], correct: 1, explanation: '"She" uses "is". Solo "am" va con I, "is" con he/she/it, "are" con you/we/they.' },
+            { question: '¿Cuál es la contracción de "I am not"?', options: ["I amn't", "I'm not", "I isn't", "I aren't"], correct: 1, explanation: 'La única contracción posible de "I am not" es "I\'m not".' },
+            { question: '"Are you a student?" - ¿Qué tipo de oración es esta?', options: ['Afirmativa', 'Negativa', 'Pregunta', 'Comando'], correct: 2, explanation: 'Al invertir el sujeto y el verbo (Are + you) formamos una pregunta.' }
         ]
     },
     {
@@ -77,9 +77,9 @@ var FULL_COURSE_DATA = [
             '<strong>Take care!</strong> → ¡Cuídate!' +
             '</div>',
         quiz: [
-            { question: 'Which greeting is MOST formal?', options: ['Hi!', "What's up?", 'Good morning!', 'Hey!'], correct: 2, explanation: '"Good morning!" es la forma más formal de las opciones.' },
-            { question: '"Nice to meet you" means:', options: ['Buenos días', 'Mucho gusto', 'Hasta luego', 'Por favor'], correct: 1, explanation: '"Nice to meet you" = "Mucho gusto" (se usa al conocer a alguien).' },
-            { question: 'Which is used when LEAVING at night?', options: ['Good evening', 'Good morning', 'Good night', 'Good afternoon'], correct: 2, explanation: '"Good night" se usa para despedirse por la noche. "Good evening" se usa al llegar.' }
+            { question: '¿Qué saludo es MÁS formal?', options: ['Hi!', "What's up?", 'Good morning!', 'Hey!'], correct: 2, explanation: '"Good morning!" es la forma más formal de las opciones.' },
+            { question: '"Nice to meet you" significa:', options: ['Buenos días', 'Mucho gusto', 'Hasta luego', 'Por favor'], correct: 1, explanation: '"Nice to meet you" = "Mucho gusto" (se usa al conocer a alguien).' },
+            { question: '¿Cuál se usa al DESPEDIRSE de noche?', options: ['Good evening', 'Good morning', 'Good night', 'Good afternoon'], correct: 2, explanation: '"Good night" se usa para despedirse por la noche. "Good evening" se usa al llegar.' }
         ]
     },
     {
@@ -113,8 +113,8 @@ var FULL_COURSE_DATA = [
             '</div>',
         quiz: [
             { question: '"She ___ English every day." (study)', options: ['study', 'studys', 'studies', 'studying'], correct: 2, explanation: 'Con he/she/it los verbos terminados en consonante + y cambian a -ies (study → studies).' },
-            { question: 'Which is correct negative form?', options: ["She not speaks", "She don't speak", "She doesn't speak", "She no speak"], correct: 2, explanation: 'Con he/she/it usamos "doesn\'t" + verbo base.' },
-            { question: 'Which word is a frequency adverb?', options: ['yesterday', 'tomorrow', 'usually', 'since'], correct: 2, explanation: '"Usually" es un adverbio de frecuencia. Los demás son marcadores de tiempo específico.' }
+            { question: '¿Cuál es la forma negativa correcta?', options: ["She not speaks", "She don't speak", "She doesn't speak", "She no speak"], correct: 2, explanation: 'Con he/she/it usamos "doesn\'t" + verbo base.' },
+            { question: '¿Qué palabra es un adverbio de frecuencia?', options: ['yesterday', 'tomorrow', 'usually', 'since'], correct: 2, explanation: '"Usually" es un adverbio de frecuencia. Los demás son marcadores de tiempo específico.' }
         ]
     },
     {
@@ -142,9 +142,9 @@ var FULL_COURSE_DATA = [
             'July · August · September · October · November · December' +
             '</div>',
         quiz: [
-            { question: 'How do you say "13" in English?', options: ['thirty', 'thirteen', 'threeten', 'thirdteen'], correct: 1, explanation: '13 = thirteen. Nota: no "thirdteen" ni "threeten".' },
-            { question: 'What day comes after Tuesday?', options: ['Monday', 'Thursday', 'Wednesday', 'Friday'], correct: 2, explanation: 'El orden es: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.' },
-            { question: 'What is the THIRD month of the year?', options: ['February', 'April', 'March', 'January'], correct: 2, explanation: 'Enero(1), Febrero(2), Marzo(3) → March es el tercer mes.' }
+            { question: '¿Cómo se dice "13" en inglés?', options: ['thirty', 'thirteen', 'threeten', 'thirdteen'], correct: 1, explanation: '13 = thirteen. Nota: no "thirdteen" ni "threeten".' },
+            { question: '¿Qué día viene después de Tuesday?', options: ['Monday', 'Thursday', 'Wednesday', 'Friday'], correct: 2, explanation: 'El orden es: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.' },
+            { question: '¿Cuál es el TERCER mes del año?', options: ['February', 'April', 'March', 'January'], correct: 2, explanation: 'Enero(1), Febrero(2), Marzo(3) → March es el tercer mes.' }
         ]
     },
     {
@@ -169,9 +169,9 @@ var FULL_COURSE_DATA = [
             '<strong>short "i":</strong> sit, ship → [ɪ] vs. <strong>long "ee":</strong> see, sheep → [iː]' +
             '</div>',
         quiz: [
-            { question: 'The "th" in "think" sounds like:', options: ['a T sound', 'a D sound', 'voiceless θ (tongue between teeth, no voice)', 'an S sound'], correct: 2, explanation: '"think" tiene "th" sordo (θ): la lengua entre los dientes sin vibración.' },
-            { question: '"Z" in American English is pronounced:', options: ['zed', 'zee', 'zay', 'zy'], correct: 1, explanation: 'En inglés americano Z = "zee". En inglés británico = "zed".' },
-            { question: 'The difference between "sit" and "see" is:', options: ['No difference', 'Vowel length and quality', 'The consonants', 'The stress'], correct: 1, explanation: '"sit" = [ɪ] (vocal breve), "see" = [iː] (vocal larga). Son fonemas distintos.' }
+            { question: 'La "th" en "think" suena como:', options: ['a T sound', 'a D sound', 'voiceless θ (tongue between teeth, no voice)', 'an S sound'], correct: 2, explanation: '"think" tiene "th" sordo (θ): la lengua entre los dientes sin vibración.' },
+            { question: '"Z" en inglés americano se pronuncia:', options: ['zed', 'zee', 'zay', 'zy'], correct: 1, explanation: 'En inglés americano Z = "zee". En inglés británico = "zed".' },
+            { question: 'La diferencia entre "sit" and "see" is:', options: ['No difference', 'Vowel length and quality', 'The consonants', 'The stress'], correct: 1, explanation: '"sit" = [ɪ] (vocal breve), "see" = [iː] (vocal larga). Son fonemas distintos.' }
         ]
     },
     {
@@ -202,9 +202,9 @@ var FULL_COURSE_DATA = [
             'yesterday · last night · last week · two days ago · in 2020' +
             '</div>',
         quiz: [
-            { question: 'What is the past of "go"?', options: ['goed', 'goes', 'went', 'gone'], correct: 2, explanation: '"Go" es irregular: go → went (en pasado simple). "Gone" es el participio.' },
-            { question: 'Correct negative past: "I ___ eat meat."', options: ["didn't", "don't", "wasn't", "not"], correct: 0, explanation: 'En pasado simple usamos "didn\'t" + verbo base para todas las personas.' },
-            { question: 'Which is a past time marker?', options: ['tomorrow', 'usually', 'yesterday', 'always'], correct: 2, explanation: '"Yesterday" es un marcador de tiempo pasado. Los otros son para presente o futuro.' }
+            { question: '¿Cuál es el pasado de "go"?', options: ['goed', 'goes', 'went', 'gone'], correct: 2, explanation: '"Go" es irregular: go → went (en pasado simple). "Gone" es el participio.' },
+            { question: 'Pasado negativo correcto: "I ___ eat meat."', options: ["didn't", "don't", "wasn't", "not"], correct: 0, explanation: 'En pasado simple usamos "didn\'t" + verbo base para todas las personas.' },
+            { question: '¿Cuál es un marcador de tiempo en pasado?', options: ['tomorrow', 'usually', 'yesterday', 'always'], correct: 2, explanation: '"Yesterday" es un marcador de tiempo pasado. Los otros son para presente o futuro.' }
         ]
     },
 
@@ -235,9 +235,9 @@ var FULL_COURSE_DATA = [
             'I have lived here <strong>for</strong> 2 years / <strong>since</strong> 2022.' +
             '</div>',
         quiz: [
-            { question: 'Structure of Present Perfect:', options: ['Subject + will + verb', 'Subject + have/has + past participle', 'Subject + verb + ed', 'Subject + be + verb-ing'], correct: 1, explanation: 'Present Perfect = have/has + participio pasado (gone, eaten, seen, etc.)' },
+            { question: 'Estructura del Present Perfect:', options: ['Subject + will + verb', 'Subject + have/has + past participle', 'Subject + verb + ed', 'Subject + be + verb-ing'], correct: 1, explanation: 'Present Perfect = have/has + participio pasado (gone, eaten, seen, etc.)' },
             { question: '"I have ___ been to Japan." (to say you went at some point in your life)', options: ['ever', 'never', 'already', 'just'], correct: 0, explanation: '"Ever" se usa en preguntas y afirmaciones para decir "alguna vez en la vida".' },
-            { question: '"She ___ just arrived." Choose the correct auxiliary:', options: ['have', 'has', 'had', 'is'], correct: 1, explanation: 'Con "she" (tercera persona singular) usamos "has" en Present Perfect.' }
+            { question: '"She ___ just arrived." Elige el auxiliar correcto:', options: ['have', 'has', 'had', 'is'], correct: 1, explanation: 'Con "she" (tercera persona singular) usamos "has" en Present Perfect.' }
         ]
     },
     {
@@ -271,7 +271,7 @@ var FULL_COURSE_DATA = [
         quiz: [
             { question: '"If it rains tomorrow, I ___ stay home." (1st Conditional)', options: ['would', 'will', 'stayed', 'had'], correct: 1, explanation: '1st Conditional: If + presente → WILL + infinitivo. Situación posible en el futuro.' },
             { question: '"If I ___ a million dollars, I would travel." (2nd Conditional)', options: ['have', 'had', 'would have', 'has'], correct: 1, explanation: '2nd Conditional: If + PASADO SIMPLE → would + infinitivo. Situación hipotética.' },
-            { question: 'Which conditional discusses an impossible PAST situation?', options: ['Zero', 'First', 'Second', 'Third'], correct: 3, explanation: '3rd Conditional habla de situaciones pasadas que NO ocurrieron: "If I had known..."' }
+            { question: '¿Qué condicional habla de una situación imposible en el PASADO?', options: ['Zero', 'First', 'Second', 'Third'], correct: 3, explanation: '3rd Conditional habla de situaciones pasadas que NO ocurrieron: "If I had known..."' }
         ]
     },
     {
@@ -299,9 +299,9 @@ var FULL_COURSE_DATA = [
             '<strong>Not only that, but also...</strong> → No solo eso...' +
             '</div>',
         quiz: [
-            { question: 'Which is the most FORMAL way to express an opinion?', options: ['I think', 'I dunno', 'In my opinion', 'Both A and C'], correct: 3, explanation: '"I think" e "In my opinion" son ambas aceptables y formales. "I dunno" es muy informal.' },
-            { question: '"I see your point, but..." is used to:', options: ['Agree completely', 'Disagree politely', 'Change the subject', 'Ask a question'], correct: 1, explanation: 'Esta frase reconoce el argumento del otro pero introduce una objeción educada.' },
-            { question: '"Furthermore" is used to:', options: ['Contrast ideas', 'Add information', 'Conclude', 'Give an example'], correct: 1, explanation: '"Furthermore" = "Además" — sirve para añadir más información a favor de un argumento.' }
+            { question: '¿Cuál es la forma más FORMAL de expresar una opinión?', options: ['I think', 'I dunno', 'In my opinion', 'Ambas A y C'], correct: 3, explanation: '"I think" e "In my opinion" son ambas aceptables y formales. "I dunno" es muy informal.' },
+            { question: '"I see your point, but..." se usa para:', options: ['Estar de acuerdo totalmente', 'No estar de acuerdo cortésmente', 'Cambiar de tema', 'Hacer una pregunta'], correct: 1, explanation: 'Esta frase reconoce el argumento del otro pero introduce una objeción educada.' },
+            { question: '"Furthermore" se usa para:', options: ['Contrastar ideas', 'Añadir información', 'Concluir', 'Dar un ejemplo'], correct: 1, explanation: '"Furthermore" = "Además" — sirve para añadir más información a favor de un argumento.' }
         ]
     },
     {
@@ -328,7 +328,7 @@ var FULL_COURSE_DATA = [
             '<ul><li>BBC Learning English</li><li>TED Talks</li><li>Easy English on YouTube</li></ul>',
         quiz: [
             { question: '"Gonna" is informal for:', options: ['going to', 'got to', 'go on', 'gone'], correct: 0, explanation: '"Gonna" es la reducción informal de "going to". Ej: "I\'m gonna eat" = "I\'m going to eat".' },
-            { question: 'The "Shadowing" technique means:', options: ['Reading silently', 'Repeating aloud at the same time as the speaker', 'Translating word by word', 'Writing while listening'], correct: 1, explanation: 'Shadowing = repetir en voz alta simultáneamente. Mejora pronunciación, ritmo e intonación.' },
+            { question: 'The "Shadowing" technique significa:', options: ['Leer en silencio', 'Repeating aloud at the same time as the speaker', 'Traducir palabra por palabra', 'Escribir mientras escuchas'], correct: 1, explanation: 'Shadowing = repetir en voz alta simultáneamente. Mejora pronunciación, ritmo e intonación.' },
             { question: '"I dunno" = ?', options: ["don't know", 'done now', 'do know', 'does know'], correct: 0, explanation: '"Dunno" es la reducción de "don\'t know", muy común en habla informal.' }
         ]
     },
@@ -351,9 +351,9 @@ var FULL_COURSE_DATA = [
             '<strong>get along</strong> → llevarse bien | <strong>break down</strong> → descomponerse' +
             '</div>',
         quiz: [
-            { question: '"Give up" means:', options: ['Entregarse (dar algo)', 'Rendirse', 'Levantarse', 'Salir'], correct: 1, explanation: '"Give up" = rendirse, abandonar un esfuerzo. "Don\'t give up!" = "¡No te rindas!"' },
-            { question: '"Run out of" means:', options: ['Correr afuera', 'Salir corriendo', 'Quedarse sin', 'Terminar algo'], correct: 2, explanation: '"Run out of" = quedarse sin algo. "We ran out of time" = "Se nos acabó el tiempo".' },
-            { question: '"I can\'t ___ it out." Which verb completes this phrasal verb?', options: ['see', 'figure', 'give', 'make'], correct: 1, explanation: '"Figure out" = entender/resolver. "I can\'t figure it out" = No puedo entenderlo/resolverlo.' }
+            { question: '"Give up" significa:', options: ['Entregarse (dar algo)', 'Rendirse', 'Levantarse', 'Salir'], correct: 1, explanation: '"Give up" = rendirse, abandonar un esfuerzo. "Don\'t give up!" = "¡No te rindas!"' },
+            { question: '"Run out of" significa:', options: ['Correr afuera', 'Salir corriendo', 'Quedarse sin', 'Terminar algo'], correct: 2, explanation: '"Run out of" = quedarse sin algo. "We ran out of time" = "Se nos acabó el tiempo".' },
+            { question: '"I can\'t ___ it out." ¿Qué verbo completa este phrasal verb?', options: ['see', 'figure', 'give', 'make'], correct: 1, explanation: '"Figure out" = entender/resolver. "I can\'t figure it out" = No puedo entenderlo/resolverlo.' }
         ]
     },
     {
@@ -379,9 +379,9 @@ var FULL_COURSE_DATA = [
             'Please feel free to contact me. → No dude en contactarme.' +
             '</div>',
         quiz: [
-            { question: 'Which is the most formal email opening?', options: ['Hey!', 'Dear Mr. Smith,', 'Hi there!', "What's up?"], correct: 1, explanation: '"Dear Mr. Smith," es el saludo formal estándar. "Hey" y "Hi there" son informales.' },
-            { question: '"I look forward to hearing from you" is placed:', options: ['At the beginning', 'In the subject line', 'Near the end, before closing', 'In the middle'], correct: 2, explanation: 'Esta frase de cierre va al final del cuerpo del email, antes de la despedida.' },
-            { question: '"Please find ___ my CV." Complete the phrase:', options: ['attached', 'below', 'here', 'there'], correct: 0, explanation: '"Please find attached" = "Por favor encuentre adjunto". Es frase estándar en emails formales.' }
+            { question: '¿Cuál es el saludo de email más formal?', options: ['Hey!', 'Dear Mr. Smith,', 'Hi there!', "What's up?"], correct: 1, explanation: '"Dear Mr. Smith," es el saludo formal estándar. "Hey" y "Hi there" son informales.' },
+            { question: '"I look forward to hearing from you" se coloca:', options: ['At the beginning', 'In the subject line', 'Near the end, before closing', 'In the middle'], correct: 2, explanation: 'Esta frase de cierre va al final del cuerpo del email, antes de la despedida.' },
+            { question: '"Please find ___ my CV." Completa la frase:', options: ['attached', 'below', 'here', 'there'], correct: 0, explanation: '"Please find attached" = "Por favor encuentre adjunto". Es frase estándar en emails formales.' }
         ]
     },
     {
@@ -404,9 +404,9 @@ var FULL_COURSE_DATA = [
             '<ul><li>Usa el <strong>contexto</strong> para deducir el significado.</li>' +
             '<li>Analiza la <strong>raíz</strong>: "unhappiness" = un(not) + happy + ness</li></ul>',
         quiz: [
-            { question: '"Skimming" means:', options: ['Reading every single word carefully', 'Reading quickly to get the main idea', 'Searching for specific information', 'Translating the text'], correct: 1, explanation: 'Skimming = lectura rápida para captar la idea general, sin detenerse en cada palabra.' },
-            { question: '"Scanning" is used to:', options: ['Understand all the details', 'Find specific information quickly', 'Enjoy the text', 'Study grammar structures'], correct: 1, explanation: 'Scanning = buscar datos específicos como fechas, nombres o cifras sin leer todo.' },
-            { question: 'The prefix "un-" means:', options: ['Again', 'Not', 'Before', 'After'], correct: 1, explanation: '"un-" = no/negación. Unhappy = not happy. Unusual = not usual. Unfair = not fair.' }
+            { question: '"Skimming" significa:', options: ['Leer cada palabra cuidadosamente', 'Leer rápido para entender la idea principal', 'Buscar información específica', 'Traducir el texto'], correct: 1, explanation: 'Skimming = lectura rápida para captar la idea general, sin detenerse en cada palabra.' },
+            { question: '"Scanning" se usa para:', options: ['Entender todos los detalles', 'Encontrar información específica rápidamente', 'Disfrutar del texto', 'Estudiar estructuras gramaticales'], correct: 1, explanation: 'Scanning = buscar datos específicos como fechas, nombres o cifras sin leer todo.' },
+            { question: 'The prefix "un-" significa:', options: ['De nuevo', 'No/Negación', 'Antes', 'Después'], correct: 1, explanation: '"un-" = no/negación. Unhappy = not happy. Unusual = not usual. Unfair = not fair.' }
         ]
     },
 
@@ -437,9 +437,9 @@ var FULL_COURSE_DATA = [
             '<strong>shouldn\'t have + PP:</strong> I shouldn\'t have eaten so much.' +
             '</div>',
         quiz: [
-            { question: '"He must be tired" expresses:', options: ['Obligation', 'Possibility (50/50)', 'Near-certain deduction', 'Permission'], correct: 2, explanation: '"Must" para deducción = casi certeza basada en evidencia. No es obligación en este contexto.' },
-            { question: '"She might have left" — when did the action happen?', options: ['Future', 'Present', 'Uncertain past', 'Habitual action'], correct: 2, explanation: '"Might have + past participle" expresa una posibilidad en el pasado.' },
-            { question: '"You should have told me" expresses:', options: ['Advice for the present', 'Criticism about a past action', 'Permission', 'Near-certain deduction'], correct: 1, explanation: '"Should have + PP" = crítica o reproche sobre algo que no se hizo en el pasado.' }
+            { question: '"He must be tired" expresa:', options: ['Obligación', 'Posibilidad (50/50)', 'Deducción casi segura', 'Permiso'], correct: 2, explanation: '"Must" para deducción = casi certeza basada en evidencia. No es obligación en este contexto.' },
+            { question: '"She might have left" — ¿cuándo ocurrió la acción?', options: ['Futuro', 'Presente', 'Pasado incierto', 'Acción habitual'], correct: 2, explanation: '"Might have + past participle" expresa una posibilidad en el pasado.' },
+            { question: '"You should have told me" expresa:', options: ['Consejo para el presente', 'Crítica sobre una acción pasada', 'Permiso', 'Deducción casi segura'], correct: 1, explanation: '"Should have + PP" = crítica o reproche sobre algo que no se hizo en el pasado.' }
         ]
     },
     {
@@ -463,9 +463,9 @@ var FULL_COURSE_DATA = [
             '<strong>Ejemplificar:</strong> For instance, To illustrate, This is evidenced by' +
             '</div>',
         quiz: [
-            { question: 'What should go in the INTRODUCTION of an essay?', options: ['Only examples', 'A conclusion', 'A thesis statement', 'A bibliography'], correct: 2, explanation: 'La introducción incluye Hook (gancho) + Contexto + Tesis (tu argumento central).' },
-            { question: '"Nevertheless" is used to:', options: ['Add information', 'Give an example', 'Contrast/show contradiction', 'Conclude'], correct: 2, explanation: '"Nevertheless" = "Sin embargo" — introduce una idea que contrasta con la anterior.' },
-            { question: '"Furthermore" in Spanish means:', options: ['Sin embargo', 'Además', 'Por lo tanto', 'Es decir'], correct: 1, explanation: '"Furthermore" = "Además" — se usa para añadir más información o argumentos.' }
+            { question: '¿Qué debe ir en la INTRODUCCIÓN de un ensayo?', options: ['Solo ejemplos', 'Una conclusión', 'Una declaración de tesis (Tesis)', 'Una bibliografía'], correct: 2, explanation: 'La introducción incluye Hook (gancho) + Contexto + Tesis (tu argumento central).' },
+            { question: '"Nevertheless" se usa para:', options: ['Añadir información', 'Dar un ejemplo', 'Contrastar/mostrar contradicción', 'Concluir'], correct: 2, explanation: '"Nevertheless" = "Sin embargo" — introduce una idea que contrasta con la anterior.' },
+            { question: '"Furthermore" in Spanish significa:', options: ['Sin embargo', 'Además', 'Por lo tanto', 'Es decir'], correct: 1, explanation: '"Furthermore" = "Además" — se usa para añadir más información o argumentos.' }
         ]
     },
     {
@@ -496,8 +496,8 @@ var FULL_COURSE_DATA = [
             '<strong>P</strong>oint → Repite tu punto' +
             '</div>',
         quiz: [
-            { question: 'Fillers like "Well..." or "I mean..." are used to:', options: ['Make grammatical mistakes', 'Gain thinking time naturally', 'Memorize vocabulary', 'Avoid speaking English'], correct: 1, explanation: 'Los fillers son pausas naturales que dan tiempo para pensar. Incluso los nativos los usan.' },
-            { question: '"Circumlocution" means:', options: ['Speaking very quickly', 'Describing a word you don\'t know', 'Using very formal language', 'Translating mentally'], correct: 1, explanation: 'Circunlocución = describir o rodear una palabra desconocida sin usarla directamente.' },
+            { question: 'Fillers (muletillas) como "Well..." or "I mean..." se usan para:', options: ['Cometer errores gramaticales', 'Ganar tiempo para pensar naturalmente', 'Memorizar vocabulario', 'Evitar hablar inglés'], correct: 1, explanation: 'Los fillers son pausas naturales que dan tiempo para pensar. Incluso los nativos los usan.' },
+            { question: '"Circumlocution" significa:', options: ['Hablar muy rápido', 'Describing a word you don\'t know', 'Usar lenguaje muy formal', 'Traducir mentalmente'], correct: 1, explanation: 'Circunlocución = describir o rodear una palabra desconocida sin usarla directamente.' },
             { question: 'In the PREP technique, "R" stands for:', options: ['Repeat', 'Reason', 'Result', 'Remember'], correct: 1, explanation: 'PREP = Point, Reason, Example, Point. La R es de "Reason" (razón/justificación).' }
         ]
     },
@@ -526,8 +526,8 @@ var FULL_COURSE_DATA = [
             '</div>',
         quiz: [
             { question: 'Which collocation is CORRECT?', options: ['do a mistake', 'make a mistake', 'take a mistake', 'give a mistake'], correct: 1, explanation: 'La collocation correcta es "make a mistake" (cometer un error). "Do" va con homework, research.' },
-            { question: '"Spill the beans" means:', options: ['Cocinar algo', 'Revelar un secreto', 'Enojarse', 'Gastar mucho dinero'], correct: 1, explanation: '"Spill the beans" = revelar un secreto o información confidencial.' },
-            { question: '"Under the weather" means:', options: ['Afuera bajo la lluvia', 'Sentirse mal o enfermo', 'Con mucho calor', 'Asustado'], correct: 1, explanation: '"Under the weather" = sentirse mal de salud, indispuesto.' }
+            { question: '"Spill the beans" significa:', options: ['Cocinar algo', 'Revelar un secreto', 'Enojarse', 'Gastar mucho dinero'], correct: 1, explanation: '"Spill the beans" = revelar un secreto o información confidencial.' },
+            { question: '"Under the weather" significa:', options: ['Afuera bajo la lluvia', 'Sentirse mal o enfermo', 'Con mucho calor', 'Asustado'], correct: 1, explanation: '"Under the weather" = sentirse mal de salud, indispuesto.' }
         ]
     },
     {
@@ -556,7 +556,7 @@ var FULL_COURSE_DATA = [
             '</div>',
         quiz: [
             { question: 'A "biased" text:', options: ['Uses only verified facts', 'Presents one perspective unfairly', 'Is very long and detailed', 'Uses only formal language'], correct: 1, explanation: 'Un texto sesgado presenta una perspectiva de forma injusta, omitiendo o minimizando otras.' },
-            { question: '"The author implies that..." means:', options: ['The author states it directly and clearly', 'The author suggests it indirectly', 'The author denies it', 'The author lists it'], correct: 1, explanation: '"Implies" = sugiere de forma indirecta, sin decirlo explícitamente.' },
+            { question: '"The author implies that..." significa:', options: ['The author states it directly and clearly', 'The author suggests it indirectly', 'The author denies it', 'The author lists it'], correct: 1, explanation: '"Implies" = sugiere de forma indirecta, sin decirlo explícitamente.' },
             { question: 'An "objective" tone is:', options: ['Emotional and passionate', 'Neutral and fact-based', 'Humorous', 'Strongly critical'], correct: 1, explanation: 'Un tono objetivo presenta hechos sin juicio personal ni emoción.' }
         ]
     },
@@ -649,8 +649,8 @@ var FULL_COURSE_DATA = [
             '</div>',
         quiz: [
             { question: 'Formal synonym for "get":', options: ['obtain', 'take', 'grab', 'fetch'], correct: 0, explanation: '"Obtain" es el sinónimo formal de "get" en contextos académicos o profesionales.' },
-            { question: '"Albeit" means:', options: ['Therefore', 'Although', 'Moreover', 'Nevertheless'], correct: 1, explanation: '"Albeit" = "aunque/si bien". Ej: "It was a success, albeit a modest one."' },
-            { question: '"Juxtaposition" in literature means:', options: ['Placing contrasting ideas side by side', 'Hiding the true meaning', 'Exaggerating for effect', 'Using extended metaphors'], correct: 0, explanation: 'Juxtaposition = yuxtaposición: colocar ideas contrastantes juntas para crear efecto.' }
+            { question: '"Albeit" significa:', options: ['Therefore', 'Although', 'Moreover', 'Nevertheless'], correct: 1, explanation: '"Albeit" = "aunque/si bien". Ej: "It was a success, albeit a modest one."' },
+            { question: '"Juxtaposition" in literature significa:', options: ['Placing contrasting ideas side by side', 'Hiding the true meaning', 'Exaggerating for effect', 'Using extended metaphors'], correct: 0, explanation: 'Juxtaposition = yuxtaposición: colocar ideas contrastantes juntas para crear efecto.' }
         ]
     },
     {
@@ -680,9 +680,9 @@ var FULL_COURSE_DATA = [
             '"This is broadly speaking the case, however..."' +
             '</div>',
         quiz: [
-            { question: '"The crux of the matter" means:', options: ['El principio del tema', 'El quid/punto central del asunto', 'La conclusión final', 'El resumen breve'], correct: 1, explanation: '"The crux of the matter" = el quid/núcleo central del asunto, lo más importante.' },
-            { question: '"While there is some merit in that..." is used to:', options: ['Agree completely', 'Refute politely acknowledging the other side', 'Ignore the argument', 'Change the topic'], correct: 1, explanation: 'Esta frase reconoce algo válido en el argumento contrario antes de refutarlo.' },
-            { question: '"To a large extent" means:', options: ['Totally and completely', 'Mostly, but not entirely', 'Only slightly', 'Not at all'], correct: 1, explanation: '"To a large extent" = en gran medida, aunque no completamente. Matiza la afirmación.' }
+            { question: '"The crux of the matter" significa:', options: ['El principio del tema', 'El quid/punto central del asunto', 'La conclusión final', 'El resumen breve'], correct: 1, explanation: '"The crux of the matter" = el quid/núcleo central del asunto, lo más importante.' },
+            { question: '"While there is some merit in that..." se usa para:', options: ['Estar de acuerdo totalmente', 'Refute politely acknowledging the other side', 'Ignore the argument', 'Change the topic'], correct: 1, explanation: 'Esta frase reconoce algo válido en el argumento contrario antes de refutarlo.' },
+            { question: '"To a large extent" significa:', options: ['Totally and completely', 'Mostly, but not entirely', 'Only slightly', 'Not at all'], correct: 1, explanation: '"To a large extent" = en gran medida, aunque no completamente. Matiza la afirmación.' }
         ]
     },
     {
@@ -704,7 +704,7 @@ var FULL_COURSE_DATA = [
             '<strong>Chiasmus:</strong> "Ask not what your country can do for you, but what you can do for your country."' +
             '</div>',
         quiz: [
-            { question: '"Show, don\'t tell" means:', options: ['Draw pictures instead of writing', 'Convey emotion through action and detail, not direct statements', 'Use only simple vocabulary', 'Tell the story in a linear way'], correct: 1, explanation: '"Show, don\'t tell" = mostrar a través de acciones/detalles en lugar de declarar los estados directamente.' },
+            { question: '"Show, don\'t tell" significa:', options: ['Draw pictures instead of writing', 'Convey emotion through action and detail, not direct statements', 'Use only simple vocabulary', 'Tell the story in a linear way'], correct: 1, explanation: '"Show, don\'t tell" = mostrar a través de acciones/detalles en lugar de declarar los estados directamente.' },
             { question: '"Anaphora" is:', options: ['Repetition of words at the END of clauses', 'Repetition of words at the BEGINNING of clauses', 'A type of extended metaphor', 'Using opposite words together'], correct: 1, explanation: 'Anáfora = repetición al inicio de cláusulas consecutivas. "We shall fight... We shall fight..."' },
             { question: '"Alliteration" is:', options: ['Rhyming at the end of lines', 'Repetition of initial consonant sounds', 'Exaggerating for comic effect', 'Giving human qualities to objects'], correct: 1, explanation: 'Aliteración = repetición del sonido consonántico inicial: "She sells seashells by the seashore."' }
         ]
