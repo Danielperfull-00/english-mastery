@@ -43,14 +43,17 @@
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     background-color: var(--bg-dark);
     color: var(--text-main);
     height: 100vh;
-    overflow: hidden;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
     transition: background-color 0.3s ease, color 0.3s ease;
+    -webkit-text-size-adjust: 100%;
 }
 
 /* Background effects (only visible in dark mode, overridden lightly in light mode by bg-dark) */
@@ -60,7 +63,7 @@ body {
         radial-gradient(ellipse at 90% 10%, rgba(248,113,113,0.03) 0%, transparent 40%);
 }
 
-.app-container { display: flex; height: 100vh; width: 100vw; position: relative; z-index: 1;}
+.app-container { display: flex; height: 100vh; width: 100%; max-width: 100%; position: relative; z-index: 1;}
 
 /* ========== CANVAS FOR CONFETTI ========== */
 #confetti-canvas {
@@ -471,9 +474,11 @@ body {
     .bottom-text { font-size: 0.65rem; font-weight: 600; font-family: 'Inter', sans-serif; }
 }
 @media (max-width: 600px) {
+    html { font-size: 17px; } /* Makes everything bigger on small phones */
+    .header-text h1 { font-size: 1.8rem; }
     .grid-container { grid-template-columns: 1fr; }
     .modal-header { padding: 1.5rem; flex-direction: column; align-items: flex-start; gap: 1rem; }
     .modal-header-actions { align-self: flex-end; }
-    .modal-body { padding: 1.5rem; }
+    .modal-body { padding: 1.5rem; font-size: 1.05rem; }
     .quiz-section { padding: 1.5rem; }
 }
