@@ -195,7 +195,7 @@ body {
 #search-input {
     background: var(--bg-card); border: 1px solid var(--border-color);
     color: var(--text-main); font-family: 'Inter', sans-serif;
-    padding: 8px 36px; border-radius: 20px; font-size: 0.85rem;
+    padding: 8px 36px; border-radius: 20px; font-size: 16px;
     width: 200px; transition: all 0.3s ease;
 }
 #search-input:focus { width: 250px; outline: none; border-color: var(--accent-red); }
