@@ -218,6 +218,8 @@ body {
 }
 .icon-btn:hover { background: rgba(150,150,150,0.1); transform: translateY(-2px); }
 
+.mobile-menu-btn { display: none; }
+
 /* Progress Banner */
 .progress-banner {
     background: var(--bg-card); border: 1px solid var(--glass-border);
