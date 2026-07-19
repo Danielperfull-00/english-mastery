@@ -1,13 +1,197 @@
-let currentLevel = 'all';
-let currentCat = 'all';
-let completedLessons = new Set();
+var currentLevel = 'all';
+var currentCat = 'all';
+var completedLessons = [];
+var currentLessonId = null;
 
-const modalOverlay = document.getElementById('modal-overlay');
-const modalLevel = document.getElementById('modal-level');
-const modalTitle = document.getElementById('modal-title');
-const modalBody = document.getElementById('modal-body');
-const closeModalBtn = document.getElementById('close-modal');
-const completeBtn = document.getElementById('complete-btn');
+function loadProgress() {
+    try {
+        var saved = localStorage.getItem('englishMasteryProgress');
+        if (saved) {
+            var parsed = JSON.parse(saved);
+            if (Array.isArray(parsed)) {
+                completedLessons = parsed;
+            }
+        }
+    } catch (e) {
+        completedLessons = [];
+    }
+}
+
+function saveProgress() {
+    localStorage.setItem('englishMasteryProgress', JSON.stringify(completedLessons));
+}
+
+function isCompleted(id) {
+    return completedLessons.indexOf(id) !== -1;
+}
+
+function getCategoryIcon(cat) {
+    var icons = {
+        grammar: '📖',
+        vocab: '🗣️',
+        listening: '🎧',
+        speaking: '🎤',
+        reading: '📚',
+        writing: '✍️',
+        pronunciation: '🔊'
+    };
+    return icons[cat] || '📝';
+}
+
+function renderCards() {
+    var grid = document.getElementById('course-grid');
+    if (!grid) return;
+    grid.innerHTML = '';
+
+    var filtered = [];
+    for (var i = 0; i < FULL_COURSE_DATA.length; i++) {
+        var item = FULL_COURSE_DATA[i];
+        var levelMatch = currentLevel === 'all' || item.level === currentLevel;
+        var catMatch = currentCat === 'all' || item.category === currentCat;
+        if (levelMatch && catMatch) {
+            filtered.push(item);
+        }
+    }
+
+    if (filtered.length === 0) {
+        grid.innerHTML = '<div class="no-results"><div class="no-results-icon">🔍</div><p>No hay lecciones que coincidan con estos filtros.</p></div>';
+        return;
+    }
+
+    for (var j = 0; j < filtered.length; j++) {
+        var lesson = filtered[j];
+        var done = isCompleted(lesson.id);
+        var card = document.createElement('div');
+        card.className = 'card' + (done ? ' completed' : '');
+        card.setAttribute('data-id', lesson.id);
+
+        var levelBadge = '<span class="card-level">' + lesson.levelName + '</span>';
+        var titleEl = '<h3 class="card-title">' + lesson.title + '</h3>';
+        var descEl = '<p class="card-desc">' + lesson.desc + '</p>';
+        var icon = getCategoryIcon(lesson.category);
+        var btnText = done ? '✓ Completado' : 'Estudiar';
+        var footer = '<div class="card-footer"><span class="category-tag">' + icon + ' ' + lesson.catName + '</span><button class="card-action" data-id="' + lesson.id + '">' + btnText + '</button></div>';
+
+        card.innerHTML = levelBadge + titleEl + descEl + footer;
+
+        (function(lessonId) {
+            card.addEventListener('click', function(e) {
+                if (e.target.classList.contains('card-action') || e.target.parentElement.classList.contains('card-action')) {
+                    toggleComplete(lessonId);
+                } else {
+                    openLesson(lessonId);
+                }
+            });
+        })(lesson.id);
+
+        grid.appendChild(card);
+    }
+}
+
+function toggleComplete(id) {
+    var idx = completedLessons.indexOf(id);
+    if (idx !== -1) {
+        completedLessons.splice(idx, 1);
+    } else {
+        completedLessons.push(id);
+    }
+    saveProgress();
+    renderCards();
+    updateProgress();
+}
+
+function openLesson(id) {
+    var lesson = null;
+    for (var i = 0; i < FULL_COURSE_DATA.length; i++) {
+        if (FULL_COURSE_DATA[i].id === id) {
+            lesson = FULL_COURSE_DATA[i];
+            break;
+        }
+    }
+    if (!lesson) return;
+
+    currentLessonId = id;
+    document.getElementById('modal-level').innerText = lesson.levelName;
+    document.getElementById('modal-title').innerText = lesson.title;
+    document.getElementById('modal-body').innerHTML = lesson.content;
+
+    var btn = document.getElementById('complete-btn');
+    if (isCompleted(id)) {
+        btn.innerText = 'Desmarcar Lección';
+        btn.className = 'complete-btn completed-state';
+    } else {
+        btn.innerText = 'Marcar como Completada ✓';
+        btn.className = 'complete-btn';
+    }
+
+    document.getElementById('modal-overlay').classList.add('active');
+    setTimeout(function() {
+        document.getElementById('modal-container').classList.add('active');
+    }, 10);
+}
+
+function closeModal() {
+    document.getElementById('modal-container').classList.remove('active');
+    setTimeout(function() {
+        document.getElementById('modal-overlay').classList.remove('active');
+    }, 300);
+}
+
+function updateProgress() {
+    var total = FULL_COURSE_DATA.length;
+    var done = completedLessons.length;
+    var percent = total === 0 ? 0 : Math.round((done / total) * 100);
+    document.getElementById('progress-percent').innerText = percent + '%';
+    document.getElementById('main-progress').style.width = percent + '%';
+    var sub = document.getElementById('progress-sub');
+    if (sub) sub.innerText = done + ' de ' + total + ' lecciones completadas';
+}
+
+function setupEventListeners() {
+    var closeBtn = document.getElementById('close-modal');
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
+
+    var overlay = document.getElementById('modal-overlay');
+    if (overlay) {
+        overlay.addEventListener('click', function(e) {
+            if (e.target === overlay) closeModal();
+        });
+    }
+
+    var completeBtn = document.getElementById('complete-btn');
+    if (completeBtn) {
+        completeBtn.addEventListener('click', function() {
+            if (currentLessonId !== null) {
+                toggleComplete(currentLessonId);
+                closeModal();
+            }
+        });
+    }
+
+    var navItems = document.querySelectorAll('.nav-item');
+    for (var i = 0; i < navItems.length; i++) {
+        (function(btn) {
+            btn.addEventListener('click', function() {
+                for (var k = 0; k < navItems.length; k++) navItems[k].classList.remove('active');
+                btn.classList.add('active');
+                currentLevel = btn.getAttribute('data-level');
+                renderCards();
+            });
+        })(navItems[i]);
+    }
+
+    var catItems = document.querySelectorAll('.cat-item');
+    for (var j = 0; j < catItems.length; j++) {
+        (function(btn) {
+            btn.addEventListener('click', function() {
+                for (var k = 0; k < catItems.length; k++) catItems[k].classList.remove('active');
+                btn.classList.add('active');
+                currentCat = btn.getAttribute('data-cat');
+                renderCards();
+            });
+        })(catItems[j]);
+    }
+}
 
 function init() {
     loadProgress();
@@ -16,156 +200,6 @@ function init() {
     updateProgress();
 }
 
-function loadProgress() {
-    try {
-        const saved = localStorage.getItem('englishMasteryProgress');
-        if (saved) {
-            const parsed = JSON.parse(saved);
-            if (Array.isArray(parsed)) {
-                completedLessons = new Set(parsed);
-            }
-        }
-    } catch (e) {
-        console.error("Error loading progress", e);
-    }
-}
-
-function saveProgress() {
-    localStorage.setItem('englishMasteryProgress', JSON.stringify([...completedLessons]));
-}
-
-function renderCards() {
-    const grid = document.getElementById('course-grid');
-    if (!grid) return;
-    grid.innerHTML = '';
-
-    const filtered = FULL_COURSE_DATA.filter(item => {
-        const levelMatch = currentLevel === 'all' || item.level === currentLevel;
-        const catMatch = currentCat === 'all' || item.category === currentCat;
-        return levelMatch && catMatch;
-    });
-
-    if (filtered.length === 0) {
-        grid.innerHTML = `
-            <div class="no-results">
-                <i data-lucide="search-x"></i>
-                <p>No hay lecciones que coincidan con estos filtros.</p>
-            </div>
-        `;
-        if (window.lucide) lucide.createIcons();
-        return;
-    }
-
-    filtered.forEach(item => {
-        const isCompleted = completedLessons.has(item.id);
-        const card = document.createElement('div');
-        card.className = `card ${isCompleted ? 'completed' : ''}`;
-        card.innerHTML = `
-            <span class="card-level">${item.levelName}</span>
-            <h3 class="card-title">${item.title}</h3>
-            <p class="card-desc">${item.desc}</p>
-            <div class="card-footer">
-                <span class="category-tag"><i data-lucide="${item.icon}"></i> ${item.catName}</span>
-                <button class="card-action" data-id="${item.id}">
-                    ${isCompleted ? 'Completado' : 'Estudiar'}
-                </button>
-            </div>
-        `;
-        
-        card.onclick = (e) => {
-            if (e.target.classList.contains('card-action')) {
-                handleAction(item.id, e);
-            } else {
-                openLesson(item.id);
-            }
-        };
-        grid.appendChild(card);
-    });
-    if (window.lucide) lucide.createIcons();
-}
-
-function handleAction(id, event) {
-    if (event) event.stopPropagation();
-    if (completedLessons.has(id)) {
-        completedLessons.delete(id);
-    } else {
-        completedLessons.add(id);
-    }
-    saveProgress();
-    renderCards();
-    updateProgress();
-}
-
-function openLesson(id) {
-    const lesson = FULL_COURSE_DATA.find(l => l.id === id);
-    if (!lesson) return;
-
-    modalLevel.innerText = lesson.levelName;
-    modalTitle.innerText = lesson.title;
-    modalBody.innerHTML = lesson.content;
-    
-    if (completedLessons.has(id)) {
-        completeBtn.innerText = "Desmarcar";
-        completeBtn.classList.add("completed-state");
-    } else {
-        completeBtn.innerText = "Marcar como Completada";
-        completeBtn.classList.remove("completed-state");
-    }
-    
-    completeBtn.onclick = () => {
-        handleAction(id);
-        closeModal();
-    };
-
-    modalOverlay.classList.add('active');
-    setTimeout(() => {
-        document.querySelector('.modal-container').classList.add('active');
-    }, 10);
-}
-
-function closeModal() {
-    document.querySelector('.modal-container').classList.remove('active');
-    setTimeout(() => {
-        modalOverlay.classList.remove('active');
-    }, 300);
-}
-
-function updateProgress() {
-    if (FULL_COURSE_DATA.length === 0) return;
-    const percent = Math.round((completedLessons.size / FULL_COURSE_DATA.length) * 100);
-    document.getElementById('progress-percent').innerText = \`\${percent}%\`;
-    document.getElementById('main-progress').style.width = \`\${percent}%\`;
-}
-
-function setupEventListeners() {
-    if(closeModalBtn) closeModalBtn.onclick = closeModal;
-    
-    if(modalOverlay) {
-        modalOverlay.onclick = (e) => {
-            if (e.target === modalOverlay) closeModal();
-        };
-    }
-
-    document.querySelectorAll('.nav-item').forEach(btn => {
-        btn.addEventListener('click', () => {
-            document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            currentLevel = btn.dataset.level;
-            renderCards();
-        });
-    });
-
-    document.querySelectorAll('.cat-item').forEach(btn => {
-        btn.addEventListener('click', () => {
-            document.querySelectorAll('.cat-item').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            currentCat = btn.dataset.cat;
-            renderCards();
-        });
-    });
-}
-
-// Guarantee execution when DOM is ready
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
 } else {

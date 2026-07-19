@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>English Mastery | De Cero a Experto</title>
+    <meta name="description" content="Tu hoja de ruta definitiva para dominar el inglés desde cero hasta la fluidez total.">
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Poppins:wght@700;900&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="app-container">
@@ -21,7 +21,7 @@
             
             <nav class="nav-menu">
                 <div class="nav-section">
-                    <span class="nav-label">Niveles de Escala</span>
+                    <span class="nav-label">Niveles</span>
                     <button class="nav-item active" data-level="all">Todo el Camino</button>
                     <button class="nav-item" data-level="a1a2">Principiante (A1-A2)</button>
                     <button class="nav-item" data-level="b1b2">Intermedio (B1-B2)</button>
@@ -38,11 +38,13 @@
                     <button class="cat-item" data-cat="speaking">Speaking</button>
                     <button class="cat-item" data-cat="reading">Reading</button>
                     <button class="cat-item" data-cat="writing">Writing</button>
+                    <button class="cat-item" data-cat="pronunciation">Pronunciación</button>
                 </div>
             </nav>
 
             <div class="sidebar-footer">
-                <p>Estado: <span class="status-dot"></span> Aprendiendo</p>
+                <span class="status-dot"></span>
+                <p>Aprendiendo activamente</p>
             </div>
         </aside>
 
@@ -54,7 +56,7 @@
                     <p>Tu hoja de ruta definitiva hacia la fluidez total.</p>
                 </div>
                 <div class="user-badge">
-                    <i data-lucide="user"></i>
+                    <span>&#128218;</span>
                     <span>Estudiante</span>
                 </div>
             </header>
@@ -67,17 +69,18 @@
                 <div class="progress-bar">
                     <div class="progress-fill" id="main-progress"></div>
                 </div>
+                <p class="progress-sub" id="progress-sub">0 de 0 lecciones completadas</p>
             </div>
 
             <section class="grid-container" id="course-grid">
-                <!-- Cards will be injected here by JS -->
+                <!-- Cards injected by JS -->
             </section>
         </main>
     </div>
 
     <!-- Content Modal -->
     <div class="modal-overlay" id="modal-overlay">
-        <div class="modal-container">
+        <div class="modal-container" id="modal-container">
             <div class="modal-header">
                 <div class="modal-title-area">
                     <span id="modal-level" class="modal-level">Principiante</span>
@@ -95,8 +98,6 @@
     </div>
 
     <script src="content.js"></script>
-    <script src="script.js"></script>    <script>
-      lucide.createIcons();
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
