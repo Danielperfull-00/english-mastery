@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>English Mastery | De Cero a Experto</title>
     <meta name="description" content="Tu hoja de ruta definitiva para dominar el inglés desde cero hasta la fluidez total.">
-    <link rel="stylesheet" href="styles.css?v=2.1">
+    <link rel="stylesheet" href="styles.css?v=3.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@700;800;900&display=swap" rel="stylesheet">
@@ -15,19 +15,24 @@
 <!-- CONFETTI CANVAS -->
 <canvas id="confetti-canvas"></canvas>
 
-<!-- SIDEBAR OVERLAY FOR MOBILE -->
-<div class="sidebar-overlay" id="sidebar-overlay"></div>
+<!-- BOTTOM SHEET FOR MOBILE -->
+<div class="bottom-sheet-overlay" id="bottom-sheet-overlay"></div>
+<div class="bottom-sheet" id="bottom-sheet">
+    <div class="bottom-sheet-handle"></div>
+    <div class="bottom-sheet-title" id="bottom-sheet-title">Título</div>
+    <div id="bottom-sheet-content"></div>
+</div>
 
 <div class="app-container">
     <!-- ===== SIDEBAR ===== -->
-    <aside class="sidebar">
+    <aside class="sidebar" id="desktop-sidebar">
         <div class="logo">
             <div class="logo-icon">EN</div>
             <span>Mastery</span>
         </div>
 
         <!-- XP / Level Box -->
-        <div class="xp-box">
+        <div class="xp-box" id="xp-box-container">
             <div class="xp-header">
                 <span class="xp-level-badge" id="xp-level-badge">Principiante</span>
                 <span class="xp-points" id="xp-points-display">0 XP</span>
@@ -42,8 +47,8 @@
             </div>
         </div>
 
-        <nav class="nav-menu">
-            <div class="nav-section">
+        <nav class="nav-menu" id="nav-menus-container">
+            <div class="nav-section" id="nav-levels-section">
                 <span class="nav-label">Niveles</span>
                 <button class="nav-item active" data-level="all">&#127760; Todo el Camino</button>
                 <button class="nav-item" data-level="a1a2">&#127311; Principiante (A1-A2)</button>
@@ -51,7 +56,7 @@
                 <button class="nav-item" data-level="c1">&#127308; Avanzado (C1)</button>
                 <button class="nav-item" data-level="c2">&#11088; Maestría (C2)</button>
             </div>
-            <div class="nav-section">
+            <div class="nav-section" id="nav-cats-section">
                 <span class="nav-label">Categorías</span>
                 <button class="cat-item active" data-cat="all">&#128218; Todas las áreas</button>
                 <button class="cat-item" data-cat="grammar">&#128221; Gramática</button>
@@ -79,8 +84,6 @@
                 <p>Tu hoja de ruta definitiva hacia la fluidez total.</p>
             </div>
             <div class="top-bar-controls">
-                <!-- Mobile Menu Button -->
-                <button class="icon-btn mobile-menu-btn" id="mobile-menu-btn" title="Menú">☰</button>
                 <!-- Search -->
                 <div class="search-wrap">
                     <span class="search-icon">&#128269;</span>
@@ -147,10 +150,30 @@
     </div>
 </div>
 
+<!-- ===== BOTTOM NAV (MOBILE) ===== -->
+<nav class="bottom-nav">
+    <button class="bottom-nav-item active" data-tab="home">
+        <span class="bottom-icon">🏠</span>
+        <span class="bottom-text">Inicio</span>
+    </button>
+    <button class="bottom-nav-item" data-tab="levels">
+        <span class="bottom-icon">📶</span>
+        <span class="bottom-text">Niveles</span>
+    </button>
+    <button class="bottom-nav-item" data-tab="categories">
+        <span class="bottom-icon">🗂️</span>
+        <span class="bottom-text">Filtros</span>
+    </button>
+    <button class="bottom-nav-item" data-tab="profile">
+        <span class="bottom-icon">⭐</span>
+        <span class="bottom-text">Perfil</span>
+    </button>
+</nav>
+
 <!-- ===== XP TOAST ===== -->
 <div class="xp-toast" id="xp-toast"></div>
 
-<script src="content.js?v=2.1"></script>
-<script src="script.js?v=2.1"></script>
+<script src="content.js?v=3.0"></script>
+<script src="script.js?v=3.0"></script>
 </body>
 </html>

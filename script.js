@@ -449,22 +449,66 @@ function finishQuiz() {
 
 // EVENT LISTENERS
 function setupEventListeners() {
-    // Mobile Menu
-    var mobileBtn = document.getElementById('mobile-menu-btn');
-    var sidebarOverlay = document.getElementById('sidebar-overlay');
-    var sidebar = document.querySelector('.sidebar');
+    // Bottom Sheet & Bottom Nav (Mobile)
+    var bottomSheet = document.getElementById('bottom-sheet');
+    var bottomOverlay = document.getElementById('bottom-sheet-overlay');
+    var sheetContent = document.getElementById('bottom-sheet-content');
+    var sheetTitle = document.getElementById('bottom-sheet-title');
+    var navItemsBottom = document.querySelectorAll('.bottom-nav-item');
     
-    function toggleMobileMenu() {
-        sidebar.classList.toggle('open');
-        sidebarOverlay.classList.toggle('active');
-    }
-    function closeMobileMenu() {
-        sidebar.classList.remove('open');
-        sidebarOverlay.classList.remove('active');
+    // Original containers
+    var xpContainer = document.getElementById('xp-box-container');
+    var levelsSection = document.getElementById('nav-levels-section');
+    var catsSection = document.getElementById('nav-cats-section');
+    var navMenusContainer = document.getElementById('nav-menus-container');
+    var desktopSidebar = document.getElementById('desktop-sidebar');
+
+    function closeBottomSheet() {
+        if (!bottomSheet) return;
+        bottomSheet.classList.remove('active');
+        bottomOverlay.classList.remove('active');
+        // Restore elements to sidebar
+        if (xpContainer && desktopSidebar) desktopSidebar.insertBefore(xpContainer, navMenusContainer);
+        if (levelsSection && navMenusContainer) navMenusContainer.insertBefore(levelsSection, catsSection);
+        if (catsSection && navMenusContainer) navMenusContainer.appendChild(catsSection);
+        
+        // Reset active tab to home
+        navItemsBottom.forEach(function(btn) { btn.classList.remove('active'); });
+        if (navItemsBottom[0]) navItemsBottom[0].classList.add('active');
     }
 
-    if (mobileBtn) mobileBtn.addEventListener('click', toggleMobileMenu);
-    if (sidebarOverlay) sidebarOverlay.addEventListener('click', closeMobileMenu);
+    if (bottomOverlay) bottomOverlay.addEventListener('click', closeBottomSheet);
+
+    navItemsBottom.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            var tab = this.getAttribute('data-tab');
+            
+            navItemsBottom.forEach(function(b) { b.classList.remove('active'); });
+            this.classList.add('active');
+
+            if (tab === 'home') {
+                closeBottomSheet();
+                window.scrollTo(0,0);
+                return;
+            }
+
+            // Move content to sheet
+            sheetContent.innerHTML = '';
+            if (tab === 'levels') {
+                sheetTitle.innerText = 'Niveles';
+                if (levelsSection) sheetContent.appendChild(levelsSection);
+            } else if (tab === 'categories') {
+                sheetTitle.innerText = 'Filtros por Categoría';
+                if (catsSection) sheetContent.appendChild(catsSection);
+            } else if (tab === 'profile') {
+                sheetTitle.innerText = 'Tu Progreso';
+                if (xpContainer) sheetContent.appendChild(xpContainer);
+            }
+
+            bottomSheet.classList.add('active');
+            bottomOverlay.classList.add('active');
+        });
+    });
 
     var closeBtn = document.getElementById('close-modal');
     if (closeBtn) closeBtn.addEventListener('click', closeModal);
@@ -521,7 +565,7 @@ function setupEventListeners() {
                 btn.classList.add('active');
                 currentLevel = btn.getAttribute('data-level');
                 renderCards();
-                if (window.innerWidth <= 960) closeMobileMenu();
+                if (window.innerWidth <= 960) closeBottomSheet();
             });
         })(navItems[i]);
     }
@@ -534,7 +578,7 @@ function setupEventListeners() {
                 btn.classList.add('active');
                 currentCat = btn.getAttribute('data-cat');
                 renderCards();
-                if (window.innerWidth <= 960) closeMobileMenu();
+                if (window.innerWidth <= 960) closeBottomSheet();
             });
         })(catItems[j]);
     }
