@@ -744,6 +744,10 @@ var FULL_COURSE_DATA = [
         category: 'pronunciation',
         catName: 'Pronunciación',
         title: 'Variantes del Inglés: US, UK y más',
+        desc: 'Comprende las diferencias entre el inglés americano, británico y otros dialectos.',
+        pronounceText: 'The elevator is broken. I need to take the lift. She wore her favorite color sweater. He wore his favourite colour jumper. Water, butter, matter, better, letter.',
+        content: '<h3>Americano vs. Británico: Pronunciación</h3>' +
+            '<div class="example-box">' +
             '<strong>"r" post-vocálica:</strong> Am: "car" [kɑːr]; Br: "car" [kɑː]<br>' +
             '<strong>vocal "a":</strong> Am: "grass" [æ]; Br: "grass" [ɑː]<br>' +
             '<strong>Flap T:</strong> Am: "butter" → suena como "budder"; Br: más nítida' +
@@ -763,6 +767,7 @@ var FULL_COURSE_DATA = [
             { question: '"Elevator" (US English) = ___ in British English:', options: ['escalator', 'lift', 'stairs', 'ladder'], correct: 1, explanation: '"Lift" es la palabra británica para lo que en EEUU llaman "elevator".' },
             { question: 'At C2 level, your pronunciation goal should be:', options: ['Sound exactly like an American', 'Sound exactly like a British person', 'Be perfectly understandable across all English variants', 'Choose one accent and never deviate'], correct: 2, explanation: 'El objetivo real es la inteligibilidad universal, no copiar un acento específico.' }
         ]
+
     },
     // ==================== TECH & DEVDOCS ====================
     {
@@ -828,3 +833,4 @@ var FULL_COURSE_DATA = [
         ]
     }
 ];
+
