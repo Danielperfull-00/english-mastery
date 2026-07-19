@@ -1,4 +1,3 @@
-import { FULL_COURSE_DATA } from './content.js';
 
 let currentLevel = 'all';
 let currentCat = 'all';

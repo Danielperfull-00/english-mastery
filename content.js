@@ -1,4 +1,4 @@
-export const FULL_COURSE_DATA = [
+const FULL_COURSE_DATA = [
   // --- A1/A2: PRINCIPIANTE ---
   {
     id: 1,
