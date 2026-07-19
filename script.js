@@ -449,6 +449,23 @@ function finishQuiz() {
 
 // EVENT LISTENERS
 function setupEventListeners() {
+    // Mobile Menu
+    var mobileBtn = document.getElementById('mobile-menu-btn');
+    var sidebarOverlay = document.getElementById('sidebar-overlay');
+    var sidebar = document.querySelector('.sidebar');
+    
+    function toggleMobileMenu() {
+        sidebar.classList.toggle('open');
+        sidebarOverlay.classList.toggle('active');
+    }
+    function closeMobileMenu() {
+        sidebar.classList.remove('open');
+        sidebarOverlay.classList.remove('active');
+    }
+
+    if (mobileBtn) mobileBtn.addEventListener('click', toggleMobileMenu);
+    if (sidebarOverlay) sidebarOverlay.addEventListener('click', closeMobileMenu);
+
     var closeBtn = document.getElementById('close-modal');
     if (closeBtn) closeBtn.addEventListener('click', closeModal);
 
@@ -504,6 +521,7 @@ function setupEventListeners() {
                 btn.classList.add('active');
                 currentLevel = btn.getAttribute('data-level');
                 renderCards();
+                if (window.innerWidth <= 960) closeMobileMenu();
             });
         })(navItems[i]);
     }
@@ -516,6 +534,7 @@ function setupEventListeners() {
                 btn.classList.add('active');
                 currentCat = btn.getAttribute('data-cat');
                 renderCards();
+                if (window.innerWidth <= 960) closeMobileMenu();
             });
         })(catItems[j]);
     }
